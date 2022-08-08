@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Navbar from "../../components/Navbar";
+import { redirectTo } from "../../libs/redirectTo";
 
 type Props = {
   initialState: any;
@@ -15,18 +16,24 @@ const PokemonDetails: NextPage<Props> = ({ initialState }) => {
   const router = useRouter();
   const Index = ("000" + pokemon.id).slice(-3);
   const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${Index}.png`;
+
+  const backHandler = () => {
+    const lastPage = redirectTo();
+    return router.push(`/pokemon${lastPage}`);
+  };
   return (
     <>
       <Navbar />
       <div className="appContainer">
         <div className="grid grid-cols-12 gap-4">
           <div className="col-span-full sticky top-0 bg-neutral-50 dark:bg-neutral-900 z-50">
-            <Link href="/pokemon">
-              <div className="flex items-center gap-2 cursor-pointer">
-                <ArrowCircleLeftIcon className="h-8 w-8 text-neutral-600 my-2" />{" "}
-                <span className="font-semibold">Back</span>
-              </div>
-            </Link>
+            <div
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={backHandler}
+            >
+              <ArrowCircleLeftIcon className="h-8 w-8 text-neutral-600 my-2" />{" "}
+              <span className="font-semibold">Back</span>
+            </div>
           </div>
           <div className="col-span-full md:col-span-6">
             <div className="border border-neutral-300 p-4 rounded-md dark:bg-neutral-800">
