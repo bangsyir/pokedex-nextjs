@@ -1,9 +1,7 @@
-import axios from "axios";
 import type { NextPage } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Pokemon from "../../components/Pokemon";
 
