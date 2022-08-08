@@ -19,7 +19,7 @@ const PokemonDetails: NextPage<Props> = ({ initialState }) => {
 
   const backHandler = () => {
     const lastPage = redirectTo();
-    return router.push(`/pokemon${lastPage}`);
+    return router.push(`/pokemon${lastPage !== null ? lastPage : ""}`);
   };
   return (
     <>
